@@ -1,0 +1,64 @@
+
+TP 1 - Programmation orientée agent
+
+Introduction à NetLogo
+proposé par Jacques Ferber - Septembre 2017
+
+ 
+
+Netlogo se trouve à l'adresse: ccl.northwestern.edu/netlogo. Il y a une présentation en français à cette adresse. Le manuel de l'utilisateur se trouve à l'adresse: http://ccl.northwestern.edu/netlogo/docs/
+
+Si vous êtes sous Linux des salles machines de la fac de Montpellier II, il faut lancer NetLogo à partir du menu Education>Netlogo sous Xubuntu
+
+Pour voir les modèles (c'est à dire, dans le jargon NetLogo, les projets NetLogo existants), il suffit d'aller dans "Bibliothèques de modèles"... Le programme "Termites" se trouve dans la catégorie "biology"
+1. Découvrir NetLogo
+
+Prenez le programme Termites, faites le fonctionner. Changez la vitesse d'exécution, le nombre de termites..
+
+Lire les transparents du cours qui donnent quelques éléments de compréhension de NetLogo. Sinon, le manuel de NetLogo est très bien fait (mais en anglais..). Une bonne introduction à NetLogo en Français est donné là: http://romainmejean.fr/manuel_netlogo/
+2. Déplacement aléatoire
+
+1) Faire un programme NetLogo dans lequel un ensemble de tortues avancent de manière aléatoire.. Utiliser le programme simple_aleatoire1 (écrit pour la version 5.1 de Netlogo, mais tourne dans les versions ultérieures)qui permet de démarrer.. (attention, il faut que vous téléchargiez ce fichier (click droit de souris) et non que vous fassiez un copier-coller avec ce programme..
+
+    Changer la forme des tortues (commande set-default-shape et le nom des formes se trouve dans l'éditeur de formes (shapes) accessible depuis le menu 'tools'.
+    Changer la couleur du fond: note, pour cela il faut demander à tous les patches de prendre une certaine couleur (voir le cours pour cela)
+    Ajouter des comportements spécifiques: faites en sorte que les tortues avancent de manière carrée ou bien en faisant des polygones.. Attention: les coordonnées sont polaires. rt x signifie que la tortue tourne à droite de x degrés. (attention: si le comportement va très vite on peut avoir l'impression que les tortues n'ont pas bougées). Les tortues peuvent laisser une marque sur le sol en bougeant(commande pen-down pour que le "pinceau" associé à la tortue se pose et pen-up pour qu'il se relève.. Il est levé par défaut). Faites en sorte que les tortues dessinent des spirales (vous trouverez le code un peu partout pour logo: l'idée générale est de décrire un polygone dont les segments sont un peu plus long à chaque tour).
+
+2) Ensuite, faites en sorte qu'il y ait deux types de tortues, comme dans le programme simple_aleatoire2 (écrit pour la version 5.1 de Netlogo, mais tourne dans les versions ultérieures). Modifiez ce programme de manière à ce que les reines avancent en faisant des carrés (des sortes de carrés, avec un peu d'aléatoire ou n'importe quelle autre figure intéressante), et que les abeilles avancent de manière aléatoire.
+3. Poursuite
+
+A partir du programme précédent, on désire maintenant que les abeilles suivent les reines. On veut que chaque abeille ait une reine de référence qu'elle découvre en se déplaçant.. Une abeille avance ainsi de manière aléatoire jusqu'à ce qu'elle rencontre une reine située à une certaine distance de perception (paramètre qui peut être mise sous la forme d'un slider). Cette dernière deviendra alors "sa" reine qu'elle essaye maintenant d'atteindre. On fera attention que les reines avancent à une vitesse de 2, pour que les abeilles suivent toujours derrière..
+
+Quelques commandes à connaître: in-radius n retourne un agentset qui contient tous les agents situés à une distance de n de la tortue (ou patch) courant. Cela s'utilise avec un filtre:
+
+	turtles in-radius n
+
+retourne toutes les tortues à une distance n
+
+	reines in-radius n
+
+retourne toutes les reines à une distance n. Pour n'en retourner qu'une, faire:
+
+	one-of reines in-radius n
+
+s'il n'y en a pas, cela retourne nobody.. Pour aller vers une chose on peut écrire set heading towards x où x est l'entité (tortue ou patche)
+3. Créer une termitière au centre
+
+Retour au programme des termites. L'un d'entre vous m'a posé un jour une question très intéressante. Ne serait-il pas plus simple de mettre toutes les brindilles en tas à un endroit particulier? Il existe un lieu particulier: le patch central (coordonnées 0,0). Je vous propose d'essayer de créer un programme qui construit une termitière au centre.. Bien entendu toutes les brindilles ne doivent pas se retrouver sur le même patch, mais s'étaler à partir du patch central. Comment modifier le programme des termites pour parvenir à cette fonctionnalité?
+
+Astuce: il est plus facile de le faire en s'éloignant du centre pour trouver une zone sans brindilles...
+4. Tri collectif par des termites
+
+Retour au programme des termites. Supposons maintenant qu'il existe deux types de brindilles (chips en anglais), des jaunes (celles qui sont déjà intégrées au programme) et des vertes. Modifier le programme Termites pour qu'il s'appelle maintenant "tri collectif", et appliquez de façon que les termites si elles portent une brindille jaune, elle l'ajoute à un tas de brindilles jaunes, mais que si elles portent une brindille verte elle l'ajoute à un tas de brindilles vertes.
+
+Dans ce cas, vous verrez la construction de deux tas: le tas des "jaunes" et le tas des "vertes".. Vous avez ainsi réalisé un programme de tri distribué...
+
+Attention: il y a un petit "truc" pour faire en sorte que les tas ne soient pas trop mélangés....
+
+ 
+
+ 
+
+ 
+
+ 
